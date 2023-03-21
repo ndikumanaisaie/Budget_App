@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_one_attached :profile_picture, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 250 }
+
+  def most_recent_categories
+    categories.order(created_at: :desc).limit(3)
+  end
 end

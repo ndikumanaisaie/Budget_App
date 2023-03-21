@@ -51,10 +51,10 @@ class PaymentsController < ApplicationController
 
   # DELETE /payments/1 or /payments/1.json
   def destroy
-    @payment.destroy
+    @payment = Payment.find(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to payments_url, notice: "Payment was successfully destroyed." }
+      format.html { redirect_to categories_path, notice: "Payment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:name, :amount, :category_id, :user_id)
+      params.require(:payment).permit(:name, :amount, :category_id)
     end
 end

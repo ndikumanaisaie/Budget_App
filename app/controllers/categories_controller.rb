@@ -16,6 +16,16 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def most_recent
+    @user = current_user
+    @categories = Category.all
+  end
+
+  def most_ancient
+    @user = current_user
+    @categories = Category.all
+  end
+
   # GET /categories/1/edit
   def edit
   end

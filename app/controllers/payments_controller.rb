@@ -3,7 +3,9 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all
+    @category = Category.find(params[:category_id])
+    @payments = Payment.where(category_id: @category.id)
+    @total_amount = @payments.sum(:amount)
   end
 
   # GET /payments/1 or /payments/1.json
@@ -21,7 +23,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payments = current_user.payments.new(payment_params)
 
     respond_to do |format|
       if @payment.save

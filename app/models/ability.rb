@@ -4,6 +4,25 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    can :destroy, Category do |cat|
+      cat.user == user
+    end
+
+    can :update, Category do |cat|
+      cat.user == user
+    end
+
+    can :destroy, Payement do |p|
+      p.author == user
+    end
+
+    can :update, Payment do |p|
+      p.user == user
+    end
+
+    can :create, Category
+    can :create, Payment
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?

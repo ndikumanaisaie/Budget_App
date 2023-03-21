@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'categories/most_recent_list'
-  get 'categories/most_ancient_list'
+  get 'categories/most_recent'
+  get 'categories/most_ancient'
 
   resources :categories, only: %i[index new create show destroy update] do
     resources :payments, only: %i[index new create destroy update]

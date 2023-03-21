@@ -18,5 +18,4 @@ class User < ApplicationRecord
   def most_ancient_categories
     categories.order(created_at: :asc).limit(3)
   end
-
 end

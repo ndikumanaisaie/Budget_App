@@ -8,7 +8,6 @@ class Category < ApplicationRecord
   validates :name, presence: true, length: { maximum: 250 }
   validates :user_id, presence: true
 
-  
   def recent_payments
     payments.order(created_at: :desc).limit(5)
   end

@@ -23,14 +23,10 @@ class PaymentsController < ApplicationController
   def create
     @payments = current_user.payments.new(payment_params)
 
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to payment_url(@payment), notice: 'Payment was successfully created.' }
-        format.json { render :show, status: :created, location: @payment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    if @payments.save
+      redirect_to category_payments_path, notice: 'Payment was successfully added'
+    else
+      render :new, alert: 'Failed to add payment'
     end
   end
 
@@ -66,6 +62,6 @@ class PaymentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def payment_params
-    params.require(:payment).permit(:name, :amount, :category_id)
+    params.permit(:name, :amount, :category_id)
   end
 end

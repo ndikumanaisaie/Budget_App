@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       root 'categories#index', as: :authenticated_root
     end
 
-    unauthenticated do
+    unauthenticated :user do
       root 'users#index', as: :unauthenticated_root
     end
   end

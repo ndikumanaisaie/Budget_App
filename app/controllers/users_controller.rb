@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action  :verify_authenticity_token, :authenticate_user!, only: %i[index]
+  skip_before_action :verify_authenticity_token, :authenticate_user!, only: %i[index]
 
   # GET /users or /users.json
   def index
@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :email)

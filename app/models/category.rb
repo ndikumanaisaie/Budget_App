@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
   belongs_to :user
   has_many :category_payments
-  has_many :payments
+  has_many :payments, dependent: :destroy
 
   has_one_attached :icon, dependent: :destroy
 

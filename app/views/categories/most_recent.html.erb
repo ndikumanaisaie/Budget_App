@@ -1,8 +1,8 @@
-<div class="card">
+<div class="nav-card bg-primary">
     <%= render 'devise/shared/nav' %>
-    <div class="card-body top">
-        <%= link_to 'Oldest', categories_most_ancient_path, class: 'float-end px-3 floaters' %>
-        <%= link_to 'Recent', categories_most_recent_path, class: 'float-end px-3 floaters' %>
+    <div class="nav-card-body">
+        <%= link_to 'Oldest', categories_most_ancient_path, class: '' %>
+        <%= link_to 'Recent', categories_most_recent_path, class: '' %>
     </div>
 </div>
 <div class="card">
@@ -20,11 +20,11 @@
                     <%= image_tag "category.jpg", class: "catagory-photo" %>
                 <% end %>
                     <div class="trans-text">
-                        <div>
-                            <p class="text-start"><%= link_to category.name, category_payments_path(category_id: category.id) %></p>
-                            <p class="text-end"><%= l category.created_at.to_date, format: :long %></p>
+                        <div class="trans-name">
+                            <p class=""><%= link_to category.name, category_payments_path(category_id: category.id) %></p>
+                            <p class="fw-bold">$<%= Payment.where(category_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
                         </div>
-                        <p class="fw-bold p-3">$<%= Payment.where(category_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
+                        <p class="date-text text-end"><%= l category.created_at.to_date, format: :long %></p>
                     </div>
             </div>
         </div>

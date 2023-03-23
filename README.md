@@ -149,6 +149,7 @@ Give a ⭐️ if you like this project and how I managed to build it!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
+- Big up to Gregoire Vella who created thiss nice looking design.
 - The original design ideal from Microverse💕.
 - Project from [Microverse](https://bit.ly/MicroverseTN) Ruby / Database and Interviewing module.
 - Thanks to the Microverse team for the great curriculum.

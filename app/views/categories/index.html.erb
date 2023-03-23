@@ -1,7 +1,7 @@
 <%= render 'devise/shared/nav' %>
 <div class="card bg-primary">
     <div class="card-body top">
-        <%= link_to 'Oldest', categories_most_ancient_path, class: 'float-end px-3 floaters mb-2' %>
+        <%= link_to 'Oldest', categories_most_ancient_path, class: 'float-end px-3 text-light mb-2' %>
         <%= link_to 'Recent', categories_most_recent_path, class: 'float-end px-3 floaters mb-2' %>
     </div>
 </div>
@@ -13,25 +13,19 @@
 <div class="card bg-light text-dark">
     <% @categories.each do |category| %>
         <div class="card-body">
-            <div class="m-3 bg-white category-card shadow-lg bg-body rounded">
+            <div class="m-3 bg-light category-card shadow-sm bg-light rounded">
                 <% if category.icon.present? %>
                     <%= image_tag category.icon, class: "catagory-photo" %>
                 <% else %>
                     <%= image_tag "category.jpg", class: "catagory-photo" %>
                 <% end %>
-                    <div class="trans-text">
-                        <div>
-                            <div class="d-flex gap-3 m-2">
-                                <p class="text-start"><%= link_to category.name, category_payments_path(category_id: category.id) %></p>
-                                <p class="text-start"><%= link_to '', category_payments_path(category_id: category.id), class: 'fa fa-credit-card-alt icons' %></p>
-                            </div>
-                            <p class="text-end"><%= l category.created_at.to_date, format: :long %></p>
-                        </div>
-                        <div class="delete-category">
-                            <p class="fw-bold p-3">$<%= Payment.where(category_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
-                            <%= button_to 'Delete'.html_safe, category_path(id: category.id), method: :delete, class: 'btn btn-danger' %>
-                        </div>
+                <div class="trans-text">
+                    <div class="trans-name">
+                        <p class=""><%= link_to category.name, category_payments_path(category_id: category.id) %></p>
+                        <p class="fw-bold">$<%= Payment.where(category_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
                     </div>
+                    <p class="date-text text-end"><%= l category.created_at.to_date, format: :long %></p>
+                </div>
             </div>
         </div>
     <% end %>

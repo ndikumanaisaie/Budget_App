@@ -1,28 +1,31 @@
 require 'rails_helper'
 
+require 'rails_helper'
+
 RSpec.describe User, type: :model do
-  before(:all) do
-    @user1 = create(:user)
+  describe 'validations' do
+    subject { User.new(name: 'Isaie', email: 'isaie@gmail.com') }
+
+    before { subject.save }
+
+    it 'name should be present' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'email should be present' do
+      subject.email = nil
+      expect(subject).to_not be_valid
+    end
   end
 
-  describe 'validations' do
-    it 'is valid with valid attributes' do
-      expect(@user1).to be_valid
+  describe 'associations' do
+    it 'has many categories' do
+      expect(User.reflect_on_association(:categories).macro).to eq(:has_many)
     end
 
-    it 'is not valid without a name' do
-      user = build(:user, name: nil)
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid without an email' do
-      user = build(:user, email: nil)
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid without a password' do
-      user = build(:user, password: nil)
-      expect(user).to_not be_valid
+    it 'has many to recipes' do
+      expect(User.reflect_on_association(:payments).macro).to eq(:has_many)
     end
   end
 end

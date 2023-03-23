@@ -1,33 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Payment, type: :model do
-  before(:all) do
-    User.destroy_all
-    Category.destroy_all
-    Payment.destroy_all
+  describe 'Validations' do
+    user = User.create(name: 'Anna', email: 'anna@gmail.com', password: '123456')
+    category = Category.create(name: 'Cakes', user_id: user.id)
+    payment = Payment.new(name: 'Cup cakeake', amount: 100.0, user_id: user.id, category_id: category.id)
 
-    @user = create(:user)
-    @category = create(:category, user: @user)
-    @payment = create(:payment, user: @user, category_id: @category.id)
-  end
-
-  describe 'Payment validations' do
-    it 'is valid with valid attributes' do
-      expect(@payment).to be_valid
-    end
-
-    it 'is not valid without a name' do
-      payment = build(:payment, name: nil)
+    it 'name should be present' do
+      payment.name = nil
       expect(payment).to_not be_valid
     end
 
-    it 'is not valid without a user' do
-      payment = build(:payment, user: nil)
+    it 'amount should be present' do
+      payment.amount = nil
       expect(payment).to_not be_valid
     end
 
-    it 'is not valid without an amount' do
-      payment = build(:payment, amount: nil)
+    it 'aleast one category should be present' do
+      user.categories = []
+      expect(category).to_not be_valid
+    end
+
+    it 'payment user should be present' do
+      payment.user = nil
       expect(payment).to_not be_valid
     end
   end

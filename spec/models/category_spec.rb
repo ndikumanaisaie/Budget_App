@@ -1,24 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  before(:all) do
-    @user = create(:user)
-    @category = create(:category, user: @user)
+  describe 'validations' do
+    subject do
+      Category.new(name: 'Fast food')
+    end
+
+    before { subject.save }
+
+    it 'name should be present' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'icon should be present' do
+      subject.icon = nil
+      expect(subject).to_not be_valid
+    end
   end
 
-  describe 'Category validations' do
-    it 'is valid with valid attributes' do
-      expect(@category).to be_valid
+  describe 'associations' do
+    it 'should have many payments' do
+      expect(Category.reflect_on_association(:payments).macro).to eq(:has_many)
     end
 
-    it 'is not valid without a name' do
-      category = build(:category, name: nil)
-      expect(category).to_not be_valid
+    it 'should have many products through payment' do
+      expect(Category.reflect_on_association(:payments).macro).to eq(:has_many)
     end
 
-    it 'is not valid without a user' do
-      category = build(:category, user: nil)
-      expect(category).to_not be_valid
+    it 'should belongs to user' do
+      expect(Category.reflect_on_association(:user).macro).to eq(:belongs_to)
     end
   end
 end

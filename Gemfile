@@ -34,7 +34,7 @@ gem 'jbuilder'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Env v2
-gem 'dotenv-rails', groups: %i[development test production]
+gem 'dotenv-rails', groups: %i[development test]
 
 # Devise
 gem 'devise'

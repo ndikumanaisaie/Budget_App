@@ -2,9 +2,10 @@
   "name": "app",
   "private": "true",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css"
+    "build": "echo 1",
+    "build:css": "echo 1"
   },
+  
   "devDependencies": {
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",

@@ -18,9 +18,9 @@
 - [❓ FAQ](#faq)
 - [📝 License](#license)
 
-# 📖 Blog app <a name="about-project"></a>
+# 📖 Personal Transaction <a name="about-project"></a>
 
->This Blog app is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts., 
+>This application lets users create a category of things they want to spend money on. After creating the category, users can then create items and associated spending. To do all this a user must have an account and logged in. 
 
 ### The App UML Class Diagram
 
@@ -49,13 +49,10 @@
 
 **You can do the following with app:**
 
-- Create a post
-- List all posts by users
-- Post details
-- User details
-- Like a posts
-- Comment on a posts
-
+- Create an account
+- Login
+- Create a category
+- Create a transaction
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,7 +83,7 @@ git clone https://github.com/ndikumanaisaie/Budget_App.git
 
   * Navigate to the location of the folder in your machine:
 
-  **`you@your-Pc-name:~$ cd blog_app_ror`**
+  **`you@your-Pc-name:~$ cd Bugdet_App`**
 
 ### Install
 

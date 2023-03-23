@@ -6,7 +6,7 @@ RSpec.feature 'Sign up', type: :feature do
     expect(page.has_field?('Name')).to be true
     expect(page.has_field?('Email')).to be true
     expect(page.has_field?('Password')).to be true
-    expect(page.has_field?('Confirm password')).to be true
+    expect(page.has_field?('Password confirmation')).to be true
     expect(page.has_button?('Sign up')).to be true
   end
 
@@ -20,7 +20,7 @@ RSpec.feature 'Sign up', type: :feature do
       within 'form' do
         fill_in 'Email', with: 'jb@gmail.com'
         fill_in 'Password', with: '2ddd22'
-        fill_in 'Confirm password', with: '2ddd22'
+        fill_in 'Password confirmation', with: '2ddd22'
       end
       click_button 'Sign up'
       expect(page).to have_content "Name can't be blank"

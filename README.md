@@ -100,9 +100,12 @@ To run the project, follow these instructions:
   * After Cloning this repo to your local machine.
   * To get it running in your terminal, run it in your IDE
 
+### Live version
+
+  * [Personal Finances](https://ndikumana.onrender.com/)
 ### Demo Video
 
-  * No video
+  * [Personal Finances](https://www.loom.com/share/5d823c925f664d96850ee77d5dbd8449)
 
 ### Running the app
 

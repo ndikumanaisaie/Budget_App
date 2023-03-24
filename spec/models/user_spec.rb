@@ -1,5 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    subject { User.new(name: 'Isaie', email: 'isaie@gmail.com') }
+
+    before { subject.save }
+
+    it 'name should be present' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'email should be present' do
+      subject.email = nil
+      expect(subject).to_not be_valid
+    end
+  end
+
+  describe 'associations' do
+    it 'has many categories' do
+      expect(User.reflect_on_association(:categories).macro).to eq(:has_many)
+    end
+
+    it 'has many to recipes' do
+      expect(User.reflect_on_association(:payments).macro).to eq(:has_many)
+    end
+  end
 end

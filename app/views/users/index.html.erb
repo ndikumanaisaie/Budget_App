@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New user", new_user_path %>
+<section class="d-flex flex-column justify-content-center align-items-center">
+  <h1 class='fw-bold'>Personal Transactions</h1>
+  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="d-grid gap-3 col-6 mx-auto">
+    <button class="btn btn-outline-primary" type="button">
+      <%= link_to "Log in", new_user_session_path, data: {turbo: false} %>
+    </button>
+    <button class="btn btn-outline-success" type="button">
+      <%= link_to "Register", new_user_registration_path, data: {turbo: false} %>
+    </button>
+  </div>
+</section>

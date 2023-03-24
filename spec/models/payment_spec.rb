@@ -18,7 +18,7 @@ RSpec.describe Payment, type: :model do
 
     it 'aleast one category should be present' do
       user.categories = []
-      expect(category).to_not be_valid
+      expect(payment).to_not be_valid
     end
 
     it 'payment user should be present' do

@@ -109,8 +109,8 @@ To run the project, follow these instructions:
 
 ### Running the app
 
-  *  Run rake `db:create:all` and `rake db:migrate`
-  *  Run `rake db:seed` to populate the database with some sample data.
+  *  Run rails `db:create:all` and `rails db:migrate`
+  *  Run `rails db:seed` to populate the database with some sample data.
   *  Run `rails s` to start the server.
   *  In your browser, go to `http://localhost:3000`.
 
